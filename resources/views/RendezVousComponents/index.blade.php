@@ -24,14 +24,14 @@
                             @foreach($allrdv as $rdv)
                                 <tr class="bg-white border-b">
                                     <td class="px-6 py-4 whitespace-nowrap text-center">
-                                        <div class="text-sm font-medium text-gray-900">{{ $rdv->nom  }}</div>
+                                        <div class="text-sm font-medium text-gray-900">{{ $rdv->client->nom  }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-center">
-                                        <div class="text-sm font-medium text-gray-900">{{ $rdv->prenom   }}</div>
+                                        <div class="text-sm font-medium text-gray-900">{{ $rdv->client->prenom   }}</div>
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-center">
-                                        <div class="text-sm font-medium text-gray-900">{{ "0".$rdv->numero   }}</div>
+                                        <div class="text-sm font-medium text-gray-900">{{ "0".$rdv->client->numero   }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-center">
                                         <div class="text-sm font-medium text-gray-900">{{ $rdv->start_time  }}</div>
@@ -39,7 +39,6 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-center">
                                         <div class="text-sm font-medium text-gray-900">{{ $rdv->finish_time  }}</div>
                                     </td>
-
                                     <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                         <a href="{{ route('rendezvous.edit', $rdv->id) }}" class="text-indigo-600 hover:text-indigo-900">Modifier</a>
                                         <form method="POST" action="{{ route('rendezvous.destroy', $rdv->id) }}" class="inline-block">

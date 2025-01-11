@@ -7,26 +7,17 @@ use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $allclients = Client::all();
         return view('ClientComponents.index',compact('allclients'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('ClientComponents.create');
     }
-    
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -40,19 +31,13 @@ class ClientController extends Controller
         Client::create($validated);
         return redirect()->route('client.index');
     }
-    
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
         $client = Client::find($id);
         return view('ClientComponents.edit',compact('client'));
     }
-    
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
         $validated = $request->validate([
@@ -64,15 +49,12 @@ class ClientController extends Controller
             'date_naissance' => 'required|date|before:today',
         ]);
         $client = Client::find($id);
-        
+
         $client->update($validated);
 
         return redirect()->route('client.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         Client::find($id)->delete();

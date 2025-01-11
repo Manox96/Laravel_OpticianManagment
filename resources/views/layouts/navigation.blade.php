@@ -24,15 +24,16 @@
                     <x-nav-link :href="route('rendezvous.index') ">
                         {{ __('RendezVous') }}
                     </x-nav-link>
+                    
                     @if(auth()->user()->is_admin)
                     <x-nav-link :href="route('categorie.index') ">
                         {{ __('Categories') }}
                     </x-nav-link>
-                    @endif
-                    @if(auth()->user()->is_admin)
+
                     <x-nav-link :href="route('produit.index') ">
                         {{ __('Produits') }}
                     </x-nav-link>
+
                     @endif
                 </div>
             </div>
